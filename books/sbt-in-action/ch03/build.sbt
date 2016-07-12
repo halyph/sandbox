@@ -24,7 +24,19 @@ taskA := { val b = taskB.value; val c = taskC.value; "taskA" }
 taskB := { Thread.sleep(5000); "taskB" }
 taskC := { Thread.sleep(5000); "taskC" }
 
-resourceGenerators in Compile += makePropertiesFile
+
+val taskD = taskKey[String]("taskC")
+taskD := {
+  val log = streams.value.log
+  log.info("run taskD")  
+  log.warn("run taskD")
+  "taskD"
+} 
+
+
+
+
+//resourceGenerators in Compile += makePropertiesFile
 
 /* // Cyclic reference involving
 val taskX = taskKey[String]("taskX")
