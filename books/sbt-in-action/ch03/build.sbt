@@ -40,6 +40,17 @@ lazy val common = (
   )
 )
 
+lazy val analytics = (
+  Project("analytics", file("analytics"))
+    dependsOn(common)
+    settings()
+  )
+
+lazy val website = (
+  Project("website", file("website"))
+    dependsOn(common)
+    settings()
+  )
 
 
 //resourceGenerators in Compile += makePropertiesFile
