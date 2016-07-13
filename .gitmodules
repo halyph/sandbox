@@ -1,0 +1,3 @@
+[submodule "books/sbt-in-action/sbt-in-action-book-examples"]
+	path = books/sbt-in-action/sbt-in-action-book-examples
+	url = git@github.com:halyph/sbt-in-action-examples.git
