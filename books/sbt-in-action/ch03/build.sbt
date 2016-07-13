@@ -31,8 +31,14 @@ taskD := {
   log.info("run taskD")  
   log.warn("run taskD")
   "taskD"
-} 
+}
 
+lazy val common = (
+  Project("common", file("common")).
+  settings(
+    libraryDependencies += "org.specs2" % "specs2_2.10" % "1.14" % "test"
+  )
+)
 
 
 
