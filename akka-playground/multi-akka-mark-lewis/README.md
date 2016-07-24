@@ -6,3 +6,5 @@ Based on [OOADSUS Chapter 8 - Multithreading](https://www.youtube.com/playlist?l
 2. ActorCountDown
 3. AskPattern
 4. HierarchyExample
+5. SupervisorExample
+6. SchedulerExample
