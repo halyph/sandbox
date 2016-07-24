@@ -30,10 +30,33 @@ object SupervisorExample extends App {
   }
 
   class ChildActor extends Actor {
+    println("Child created")
+
     override def receive = {
       case PrintSignal(n) => println(n + " " + self)
       case DivideNumbers(n, d) => println(n/d)
       case BadStuff => throw new RuntimeException("Stuff happened")
+    }
+
+    override def preStart() = {
+      super.preStart()
+      println("preStart")
+    }
+
+    override def postStop() = {
+      super.postStop()
+      println("postStop")
+    }
+
+
+    override def preRestart(reason: Throwable, message: Option[Any]): Unit = {
+      super.preRestart(reason, message)
+      println("preRestart")
+    }
+
+    override def postRestart(reason: Throwable): Unit = {
+      super.postRestart(reason)
+      println("postRestart")
     }
   }
 
@@ -42,12 +65,11 @@ object SupervisorExample extends App {
   val actor2 = system.actorOf(Props[ParentActor], "Parent2")
 
   actor ! CreateChild
-  actor ! CreateChild
+//  actor ! CreateChild
 
   val child0 = system.actorSelection("akka://HierarchySystem/user/Parent1/child0")
   child0 ! DivideNumbers(4,0)
   child0 ! DivideNumbers(4,2)
-  child0 ! DivideNumbers(10,2)
   child0 ! BadStuff
 
   Thread.sleep(2000)
