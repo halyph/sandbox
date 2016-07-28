@@ -6,6 +6,7 @@ scalaVersion in ThisBuild := "2.11.8"
 
 lazy val helloAkka = project("hello-akka")
 lazy val playingWithActors = project("playing-with-actors")
+lazy val actorPaths = project("actor-paths")
 
 lazy val multiThreadingWithAkka = project("multi-akka-mark-lewis")
     .settings(
